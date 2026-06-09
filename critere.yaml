@@ -1,0 +1,63 @@
+critere_get_All:
+    path:   /criteres/All
+    controller: App\Controller\MainController::query
+    methods: GET
+    defaults:
+        api-service: 'Service_Critere'
+        api-function: 'getAllCriteres'
+        
+
+critere_get_getcritere_id:
+    path:   /critere/{idcritere}
+    controller: App\Controller\MainController::query
+    methods: GET
+    defaults:
+        api-service: 'Service_Critere'
+        api-function: 'getCritereDAOById'
+        parameters:
+            - 'idcritere'
+    requirements:
+        idcritere: '\d+'
+
+critere_get_criterebyidsrc:
+    path:   /critere/src={idsupport}
+    controller: App\Controller\MainController::query
+    methods: GET
+    defaults:
+        api-service: 'Service_Critere' 
+        api-function: 'getCritereDAOByIdSrc'
+        parameters:
+            - 'idsupport'
+
+critere_post_insertritere:
+    path:   /critere
+    controller: App\Controller\MainController::create
+    methods: POST
+    defaults:
+        api-service: 'Service_Critere'
+        api-function: 'insertCritereDb'
+        parameters:
+            - 'critere'
+
+
+critere_put_updatecritere:
+    path:   /critere/{id}
+    controller: App\Controller\MainController::update
+    methods: PUT
+    defaults:
+        api-service: 'Service_Critere'
+        api-function: 'updateCritereDb'
+        primaryKeyName: 'id'
+        dataKeyName: 'critere'
+        parameters:
+            - 'critere'
+
+critere_delete_deletecritere:
+    path:   /critere/{id}
+    controller: App\Controller\MainController::delete
+    methods: DELETE
+    defaults:
+        api-service: 'Service_Critere'
+        api-function: 'deleteCritereDb'
+        parameters:
+            id: 'id'
